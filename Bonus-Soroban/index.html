@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Contas para Soroban</title>
+    <style>
+        body {
+            margin-top: 20%;
+            background-image: linear-gradient(to right top, #052e37, #004673, #0058b6, #5c56e5, #e112eb);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fffdfd;
+            text-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+        }
+
+        #equation {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fffdfd;
+        }
+
+        #answer {
+            margin-bottom: 10px;
+        }
+
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 10%;
+            background-color: #e112eb;
+            border: 0;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: #FFFFFF;
+            font-family: Phantomsans, sans-serif;
+            font-size: 100%;
+            min-width: 10%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #submit:hover {
+            background-color: #0499df;
+        }
+
+        #timer {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fffdfd;
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #8bf15c;
+        }
+
+        #error {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ff4848;
+        }
+
+        #total {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #fffdfd;
+        }
+
+        #best-time {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #fffdfd;
+        }
+
+        #reset {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #fa5959;
+            color: #FFFFFF;
+        }
+
+        #reset:hover {
+            background-color: #0499df;
+        }
+
+        #operation-buttons {
+            margin-top: 20px;
+        }
+
+        .operation-button {
+            padding: 10px 20px;
+            border-radius: 10%;
+            background-color: #e112eb;
+            border: 0;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            color: #FFFFFF;
+            font-family: Phantomsans, sans-serif;
+            font-size: 100%;
+            min-width: 10%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .operation-button:hover {
+            background-color: #0499df;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gerador de Contas Para Soroban</h1>
+    <div id="equation"></div>
+    <input type="text" id="answer" placeholder="Digite a resposta">
+    <button id="submit">Verificar</button>
+    <div id="timer"></div>
+    <div id="score">Questões corretas: 0</div>
+    <div id="error">Questões incorretas: 0</div>
+    <div id="total">Questões totais: 0</div>
+    <div id="best-time">Melhor tempo: N/A</div>
+
+    <button id="reset">Zerar</button>
+
+    <div id="operation-buttons">
+        <button class="operation-button" id="addition-button">Adição</button>
+        <button class="operation-button" id="subtraction-button">Subtração</button>
+        <button class="operation-button" id="multiplication-button">Multiplicação</button>
+        <button class="operation-button" id="division-button">Divisão</button>
+    </div>
+
+    <script>
+        var correctAnswer;
+        var startTime;
+        var score = 0;
+        var error = 0;
+        var total = 0;
+        var bestTime = Infinity;
+        var timerInterval;
+        var selectedOperation = 'addition';
+
+        function generateEquation() {
+            var num1 = Math.floor(Math.random() * 1000);
+            var num2 = Math.floor(Math.random() * 1000);
+
+            switch (selectedOperation) {
+                case 'addition':
+                    correctAnswer = num1 + num2;
+                    document.getElementById('equation').textContent = num1 + ' + ' + num2;
+                    break;
+                case 'subtraction':
+                    correctAnswer = num1 - num2;
+                    document.getElementById('equation').textContent = num1 + ' - ' + num2;
+                    break;
+                case 'multiplication':
+                    correctAnswer = num1 * num2;
+                    document.getElementById('equation').textContent = num1 + ' * ' + num2;
+                    break;
+                case 'division':
+                    correctAnswer = Math.floor(num1 / num2);
+                    document.getElementById('equation').textContent = num1 + ' ÷ ' + num2;
+                    break;
+                default:
+                    break;
+            }
+
+            document.getElementById('answer').value = '';
+            document.getElementById('answer').focus();
+        }
+
+        function startTimer() {
+            startTime = new Date().getTime();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function updateTimer() {
+            var currentTime = new Date().getTime();
+            var totalTime = currentTime - startTime;
+            var seconds = Math.floor(totalTime / 1000) % 60;
+            var minutes = Math.floor(totalTime / (1000 * 60));
+
+            document.getElementById('timer').textContent = 'Tempo: ' + minutes + ' minuto(s) e ' + seconds + ' segundo(s)';
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = 'Questões corretas: ' + score;
+            document.getElementById('error').textContent = 'Questões incorretas: ' + error;
+            document.getElementById('total').textContent = 'Questões totais: ' + total;
+            document.getElementById('best-time').textContent = 'Melhor tempo: ' + formatTime(bestTime);
+        }
+
+        function formatTime(time) {
+            var seconds = Math.floor(time / 1000) % 60;
+            var minutes = Math.floor(time / (1000 * 60));
+            return minutes + ' minuto(s) e ' + seconds + ' segundo(s)';
+        }
+
+        document.getElementById('submit').addEventListener('click', function () {
+            var userAnswer = parseInt(document.getElementById('answer').value, 10);
+            total++;
+
+            if (userAnswer === correctAnswer) {
+                var endTime = new Date().getTime();
+                var totalTime = endTime - startTime;
+
+                if (totalTime < bestTime) {
+                    bestTime = totalTime;
+                }
+
+                var seconds = Math.floor(totalTime / 1000);
+                var minutes = Math.floor(seconds / 60);
+                seconds %= 60;
+
+                alert('Resposta correta! Tempo: ' + minutes + ' minuto(s) e ' + seconds + ' segundo(s)');
+                score++;
+            } else {
+                alert('Resposta incorreta. Tente novamente.');
+                error++;
+            }
+
+            stopTimer();
+            generateEquation();
+            startTimer();
+            updateScore();
+        });
+
+        document.getElementById('reset').addEventListener('click', function () {
+            score = 0;
+            error = 0;
+            total = 0;
+            bestTime = Infinity;
+            updateScore();
+        });
+
+        document.getElementById('addition-button').addEventListener('click', function () {
+            selectedOperation = 'addition';
+            generateEquation();
+        });
+
+        document.getElementById('subtraction-button').addEventListener('click', function () {
+            selectedOperation = 'subtraction';
+            generateEquation();
+        });
+
+        document.getElementById('multiplication-button').addEventListener('click', function () {
+            selectedOperation = 'multiplication';
+            generateEquation();
+        });
+
+        document.getElementById('division-button').addEventListener('click', function () {
+            selectedOperation = 'division';
+            generateEquation();
+        });
+
+        generateEquation();
+        startTimer();
+    </script>
+</body>
+
+</html>
