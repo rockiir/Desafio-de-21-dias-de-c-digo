@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: rgba(39, 39, 39, 0.2);
+  color: #fff;
+  padding: 1%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 1%;
+}
+
+.slider1 {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  position: relative;
+}
+
+.banner-Text {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.slider1 button {
+  position: absolute;
+  top: 83%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: #ff0808;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.slider1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.slider1 button:hover {
+  background-color: #a82828;
+  color: #fff;
+}
+
+.slider1 img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: calc(100vh - 160px);
+}
+
+.slider1 button {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.slider1 img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 10px;
+}
+
+.slider {
+  margin-top: 2%;
+  padding: 20px;
+}
+
+.slide-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slide-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.slide {
+  flex: 0 0 300px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.button {
+  margin-top: 20px;
+  background-color: #ff0808;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #a82828;
+}
+
+.expanded {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+.slide-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  height: 600px; 
+  transition: height 0.5s ease; 
+}
+
+.slide-grid.expand {
+  height: auto; 
+}
+
+#about {
+  padding: 50px;
+}
+
+.about-content {
+  padding: 3%;
+
+  text-align: center;
+  background-color: #101011;
+
+}
+
+.about-content h2 {
+
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+
+  color: #ffffff;
+
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.about-content img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+
+#contact {
+  background-color: #d8a9f8;
+  padding: 50px;
+}
+
+.contact-content {
+  padding: 2%;
+  text-align: center;
+  background-color: #e9d7f5;
+}
+
+.contact-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-content p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.contact-content button {
+  padding: 10px 20px;
+  background-color: #cc7afc;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-content button:hover {
+  background-color: #9d34ff;
+  cursor: pointer;
+}
+
+.veja-mais{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: #082dff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.veja-mais:hover{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  background-color: #08c5ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}

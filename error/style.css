@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0e0030;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  font-family: 'Oswald', sans-serif;
+  color: #d614fd;
+  text-shadow: -4px -4px 0 rgb(227, 17, 255);
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+
+}
+
+.home-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}

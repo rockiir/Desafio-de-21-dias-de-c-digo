@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Galeria</title>
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery-item {
+      margin: 10px;
+    }
+
+    .gallery-item img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .modal {
+    display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .modal-content img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="../ecommerce/images/1.jpg" alt="Imagem 1" onclick="openModal('../ecommerce/images/1.jpg')">
+    </div>
+    <div class="gallery-item">
+      <img src="../ecommerce/images/2.jpg" alt="Imagem 2" onclick="openModal('../ecommerce/images/2.jpg')">
+    </div>
+    <div class="gallery-item">
+      <img src="../ecommerce/images/3.jpg" alt="Imagem 3" onclick="openModal('../ecommerce/images/3.jpg')">
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <img id="modal-image" src="" alt="Imagem Ampliada">
+    </div>
+    <span class="close" onclick="closeModal()">&times;</span>
+  </div>
+
+  <script>
+    function openModal(imageUrl) {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modal-image');
+
+      modal.style.display = 'flex';
+      modalImage.src = imageUrl;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

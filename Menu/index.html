@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu com Glassmorphism</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ee5522;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23d23d09' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 999;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-link {
+      margin: 0 10px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-link:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">Meu Site</div>
+    <ul class="navbar-links">
+      <li><a class="navbar-link" href="/">Home</a></li>
+      <li><a class="navbar-link" href="/">Sobre</a></li>
+      <li><a class="navbar-link" href="/">Contato</a></li>
+    </ul>
+  </nav>
+
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('sticky', window.scrollY > 0);
+    });
+  </script>
+</body>
+</html>

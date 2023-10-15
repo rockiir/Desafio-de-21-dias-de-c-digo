@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .question-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 10px;
+    }
+
+    .choices label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container">
+    <h1>Quiz</h1>
+    <div class="question-page" id="question-page-1">
+      <div class="question">
+        <h3>Pergunta 1</h3>
+        <div class="choices">
+          <label><input type="radio" name="q1" value="opcao1"> Opção 1</label>
+          <label><input type="radio" name="q1" value="opcao2"> Opção 2</label>
+          <label><input type="radio" name="q1" value="opcao3"> Opção 3</label>
+        </div>
+      </div>
+      <button onclick="nextQuestion()">Responder</button>
+    </div>
+
+    <div class="question-page" id="question-page-2" style="display: none;">
+      <div class="question">
+        <h3>Pergunta 2</h3>
+        <div class="choices">
+          <label><input type="radio" name="q2" value="opcao1"> Opção 1</label>
+          <label><input type="radio" name="q2" value="opcao2"> Opção 2</label>
+          <label><input type="radio" name="q2" value="opcao3"> Opção 3</label>
+        </div>
+      </div>
+      <button onclick="nextQuestion()">Responder</button>
+    </div>
+
+    <div class="question-page" id="question-page-3" style="display: none;">
+      <div class="question">
+        <h3>Pergunta 3</h3>
+        <div class="choices">
+          <label><input type="radio" name="q3" value="opcao1"> Opção 1</label>
+          <label><input type="radio" name="q3" value="opcao2"> Opção 2</label>
+          <label><input type="radio" name="q3" value="opcao3"> Opção 3</label>
+        </div>
+      </div>
+      <button onclick="showResult()">Responder</button>
+    </div>
+
+    <div id="result" style="display: none;">
+      <h2>Resultado</h2>
+      <p id="score"></p>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    let totalQuestions = 3;
+    let score = 0;
+
+    function nextQuestion() {
+      const currentPageElement = document.getElementById(`question-page-${currentPage}`);
+      const nextPageElement = document.getElementById(`question-page-${currentPage + 1}`);
+      const checkedOption = document.querySelector(`#question-page-${currentPage} input[type="radio"]:checked`);
+
+      if (checkedOption) {
+        score += 1;
+      }
+
+      currentPageElement.style.display = 'none';
+
+      if (currentPage === totalQuestions) {
+        showResult();
+      } else {
+        nextPageElement.style.display = 'block';
+        currentPage += 1;
+      }
+    }
+
+    function showResult() {
+      const currentPageElement = document.getElementById(`question-page-${currentPage}`);
+      const resultElement = document.getElementById('result');
+      const scoreElement = document.getElementById('score');
+
+      const checkedOption = document.querySelector(`#question-page-${currentPage} input[type="radio"]:checked`);
+      if (checkedOption) {
+        score += 1;
+      }
+
+      currentPageElement.style.display = 'none';
+      resultElement.style.display = 'block';
+      scoreElement.textContent = `Você acertou ${score} de ${totalQuestions} perguntas.`;
+    }
+  </script>
+</body>
+</html>
