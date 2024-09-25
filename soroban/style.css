@@ -1,0 +1,75 @@
+#soroban {
+    width: 80%;
+    height: 420px;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.quadro {
+    width: 100%;
+    height: 80%;
+    border: 1px solid #0f0e0e;
+    display: flex;
+}
+
+.coluna {
+    width: 8.33%;
+    height: 100%;
+    border-right: 1px solid #ddd; 
+    position: relative;
+}
+
+.coluna:last-child {
+    border-right: none;
+}
+
+.linha-vertical {
+    width: 5px;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.esfera {
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    left: 0%;
+    transition: all 0.2s ease-in-out;
+}
+
+.esfera-cima {
+    top: 0%;
+}
+
+.esfera-baixo {
+    top: 50%, 100%, 100%;
+}
+
+.ativo {
+    background-color: #f00;
+}
+
+.barra-superior, .barra-inferior {
+    width: 100%;
+    height: 10%;
+    background-color: #ccc;
+}
+.contador {
+    position: absolute;
+    bottom: -100px; /* Distância do contador em relação ao fundo da coluna */
+    left: 50%; /* Centraliza o contador horizontalmente */
+    transform: translateX(-50%); /* Centraliza o contador horizontalmente */
+    background-color: #fff; /* Cor de fundo do contador */
+    padding: 5px 10px; /* Espaçamento interno do contador */
+    border: 1px solid #000; /* Borda do contador */
+    border-radius: 5px; /* Arredondamento dos cantos do contador */
+}
+
