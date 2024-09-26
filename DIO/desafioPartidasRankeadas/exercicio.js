@@ -24,5 +24,9 @@ function calcularRanqueadas(vitorias, derrotas) {
         nivel: nivel
     };
 }
-const resultado = calcularRanqueadas(75, 20);
-console.log(`Saldo: ${resultado.saldo}, Nível: ${resultado.nivel}`);
+
+const vitorias = 75; 
+const derrotas = 20; 
+
+const resultado = calcularRanqueadas(vitorias, derrotas);
+console.log(`O Herói tem de saldo de **${resultado.saldo}** e está no nível de **${resultado.nivel}**.`);
